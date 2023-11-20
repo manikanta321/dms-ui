@@ -134,11 +134,11 @@ export class ViewPromotionPopupComponent implements OnInit {
     this.endDate = new FormControl(null);
     // alert(e.value);
     // console.log("This is the DATE:", e.value);
-    this.selectedStartDate = new Date(e.value).getFullYear() + '/' + (new Date(e.value).getMonth() + 1) + '/' + new Date(e.value).getDate();
+    this.selectedStartDate = new Date(e.value).getFullYear() +'/'+ (new Date(e.value).getMonth() + 1) +'/'+ new Date(e.value).getDate();
     console.log(this.selectedStartDate);
   }
   enddateChange(e) {
-    this.selectedEndDate = new Date(e.value).getFullYear() + '/' + (new Date(e.value).getMonth() + 1) + '/' + new Date(e.value).getDate();
+    this.selectedEndDate = new Date(e.value).getFullYear() +'/'+ (new Date(e.value).getMonth() + 1) +'/'+ new Date(e.value).getDate();
     this.minDateToFinish.next(e.value.toString());
     console.log(this.selectedEndDate);
   }
@@ -256,20 +256,15 @@ export class ViewPromotionPopupComponent implements OnInit {
       headerName: "Code",
       field: 'code', type: ['nonEditableColumn'], sort: 'desc',
 
-      checkboxSelection: (params) => {
+      // checkboxSelection: (params) => {
 
-        return params.node.data.isEnabled
-      },
-
-      showDisabledCheckboxes: true,
-
-
-
-
+      //   return params.node.data.isEnabled
+      // },
+      // showDisabledCheckboxes: true,
     },
 
     { headerName: "Dealer Name", field: 'dealerName', type: ['nonEditableColumn'] },
-    { headerName: "", field: '', type: ['nonEditableColumn'] },
+    // { headerName: "", field: '', type: ['nonEditableColumn'] },
 
     {
       headerName: "Geography", field: 'geography', type: ['nonEditableColumn'],
@@ -352,6 +347,7 @@ export class ViewPromotionPopupComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any) { }
     
     statusName:any
+    aditionalMoqDetails:any=[]
   ngOnInit(): void {
     let data = localStorage.getItem('promoclickId');
     this.LoginId = localStorage.getItem("logInId");
@@ -478,10 +474,6 @@ export class ViewPromotionPopupComponent implements OnInit {
               stockItemId: element2.stockItemId,
               productName: element2.stockItemName
             });
-
-
-
-
           })
 
           let obj: any = {}
@@ -499,6 +491,10 @@ export class ViewPromotionPopupComponent implements OnInit {
           this.addgetgroup.push(obj);
           console.log('this.mainobjGetGroups', this.addgetgroup)
         })
+        res.response.promoDetails.aditionalMoqDetails.map((data:any)=>{
+          this.aditionalMoqDetails.push(data)
+        })
+        console.log('this.aditionalMoqDetails',this.aditionalMoqDetails);
       }
       if (res.response.promotionTypesId == 2 || res.response.promotionTypesName == "Buy AB Get CD") {
         this.addbuyset = [];

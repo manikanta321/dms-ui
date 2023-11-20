@@ -99,96 +99,146 @@
                                 <div class="col-10 buyGrp-h">
                                     <h5 class="item-header"><b>Buy </b>group {{i+1}}</h5>
                                 </div>
-                                <div class="col-2 plsImg">
-                                    <img src="assets/img/plus-disabled.png" class="plus-image" alt="plus-btn">
-                                </div>
+                                <!-- <div class="col-2 plsImg">
+                                                    <img src="assets/img/plus-disabled.png" class="plus-image" alt="plus-btn">
+                                                </div> -->
                                 <!-- <div class="col-2 plsAdd">
-                                        <img src="assets/img/minus.png" class="plus-image" alt="plus-btn">
-                                    </div> -->
+                                                        <img src="assets/img/minus.png" class="plus-image" alt="plus-btn">
+                                                    </div> -->
                             </div>
                             <!-- <div class="row">
-                                <div class="productlevel col-12">
-                                    <label>Item Level<span class="astr">*</span></label><br>
-                                    <label class="itemsProductOne">Product</label>
-                                </div>
-                            </div> -->
+                                                <div class="productlevel col-12">
+                                                    <label>Item Level<span class="astr">*</span></label><br>
+                                                    <label class="itemsProductOne">Product</label>
+                                                </div>
+                                            </div> -->
                             <div class="row itemSelectedSection">
-                                <div class="col-10">
+                                <div class="col-md-12">
                                     <!-- <label>Items<span class="astr">*</span></label> -->
-                                    <mat-card class="list-item-view">
-    
+                                    <mat-card class="list-item-view border border-success">
+                
                                         <mat-card-content class="item-in-box-view">
-                                            <ul style="margin-left: -16%;">
-                                                <ul>
+                                            <!-- style="margin-left: -16%;" -->
+                                            <ul style="padding: 0px;">
+                                                <ul style="padding: 0px;">
                                                     <li *ngFor="let producttable of addbuyg.productselectedRows"
                                                         aria-placeholder="Items">
-                                                        <mat-checkbox class="example-margin font" [checked]="true"
-                                                            disabled="true">
-                                                            <p class="pinside">{{producttable?.productName}}</p>
-                                                        </mat-checkbox>
+                                                        <!-- <mat-checkbox class="example-margin font" [checked]="true"
+                                                                            disabled="true">
+                                                                        </mat-checkbox> -->
+                                                        <p class="pinside">{{producttable?.productName}}</p>
                                                     </li>
                                                 </ul>
                                             </ul>
                                         </mat-card-content>
                                     </mat-card>
                                 </div>
-                                <div class="col-2 qtyalign">
-                                    <label>Qty<span class="astr">*</span></label>
-    
-                                    <input type="number" placeholder="1" class="qty-box" id=qty name="qty" required
-                                        [(ngModel)]="addbuyg.MaxVolume" name="qty{{i}}" disabled="true">
-                                    <label>MOQ<span class="astr">*</span></label>
-                                    <input type="number" placeholder="1" class="mty-box" id=moq name="moq" required
-                                        name="moq{{i}}" [(ngModel)]="addbuyg.MOQ" disabled="true">
-                                </div>
+                                <!-- <div class="col-2 qtyalign">
+                                                    <label>Qty<span class="astr">*</span></label>
+                    
+                                                    <input type="number" placeholder="1" class="qty-box" id=qty name="qty" required
+                                                        [(ngModel)]="addbuyg.MaxVolume" name="qty{{i}}" disabled="true">
+                                                    <label>MOQ<span class="astr">*</span></label>
+                                                    <input type="number" placeholder="1" class="mty-box" id=moq name="moq" required
+                                                        name="moq{{i}}" [(ngModel)]="addbuyg.MOQ" disabled="true">
+                                                </div> -->
                             </div>
                         </div>
                     </div>
-    
+                
                     <div class="col-lg-6 GetGroup">
                         <div class="get1" *ngFor="let addbuyg of addgetgroup; let i=index">
                             <div class="row">
                                 <div class="col-10 buyGrp-h">
                                     <h5 class="item-header"><b>Get </b>group {{i+1}}</h5>
                                 </div>
-                                <div class="col-2 plsImg">
-                                    <img src="assets/img/plus-disabled.png" class="plus-image" alt="plus-btn">
-                                </div>
-    
+                                <!-- <div class="col-2 plsImg">
+                                                    <img src="assets/img/plus-disabled.png" class="plus-image" alt="plus-btn">
+                                                </div> -->
+                
                             </div>
                             <!-- <div class="row">
-                                <div class="productlevel col-12">
-                                    <label>Item Level <span class="astr">*</span></label><br>
-                                    <label class="itemsProductOne">Product</label>
-                                </div>
-                            </div> -->
+                                                <div class="productlevel col-12">
+                                                    <label>Item Level <span class="astr">*</span></label><br>
+                                                    <label class="itemsProductOne">Product</label>
+                                                </div>
+                                            </div> -->
                             <div class="row itemSelectedSection">
-                                <div class="col-10">
+                                <div class="col-md-12">
                                     <!-- <label>Items<span class="astr">*</span></label> -->
-                                    <mat-card class="list-item-view">
-    
+                                    <mat-card class="list-item-view border border-success">
+                
                                         <mat-card-content class="item-in-box-view">
-                                            <ul style="margin-left: -7%;">
+                                            <!-- style="margin-left: -7%;" -->
+                                            <ul style="padding: 0px;">
                                                 <li *ngFor="let producttable of addbuyg?.productselectedRows">
-                                                    <mat-checkbox class="example-margin font" [checked]="true"
-                                                        disabled="true">
-                                                        <p class="pinside">{{producttable?.productName}}</p>
-                                                    </mat-checkbox>
+                                                    <!-- <mat-checkbox class="example-margin font" [checked]="true"
+                                                                        disabled="true">
+                                                                    </mat-checkbox> -->
+                                                    <p class="pinside">{{producttable?.productName}}</p>
                                                 </li>
-    
+                
                                             </ul>
                                         </mat-card-content>
                                     </mat-card>
                                 </div>
-                                <div class="col-2 qtyalign">
-                                    <label>Qty<span class="astr">*</span></label>
-                                    <input [(ngModel)]="addbuyg.MaxVolume" name="Getqty{{i}}" type="number" placeholder="1"
-                                        class="qty-box" id=qty name="qty" required disabled="true">
+                                <!-- <div class="col-2 qtyalign">
+                                                    <label>Qty<span class="astr">*</span></label>
+                                                    <input [(ngModel)]="addbuyg.MaxVolume" name="Getqty{{i}}" type="number" placeholder="1"
+                                                        class="qty-box" id=qty name="qty" required disabled="true">
+                                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header pl-0" style="background-color: #018B75;">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h4 class="mb-0 text-light">Qty From</h4>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h4 class="mb-0 text-light">Qty To</h4>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <h4 class="mb-0 text-light">Buy</h4>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <h4 class="mb-0 text-light">Get</h4>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <h4 class="mb-0 text-light">Additional</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="row mt-2" *ngFor="let Item of aditionalMoqDetails" style="border-bottom: 1px solid rgb(227, 225, 225);">
+                                    <div class="col-md-3">
+                                        {{Item.qtyFrom}}
+                                    </div>
+                                    <div class="col-md-3">
+                                        {{Item.qtyTo}}
+                                    </div>
+                                    <div class="col-md-2">
+                                        {{Item.buyValue}}
+                                    </div>
+                                    <div class="col-md-2">
+                                        {{Item.getValue}}
+                                    </div>
+                                    <div class="col-md-2">
+                                        {{Item.aditional}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-    
+                
+                    <div class="Min-order-qty mt-3">
+                        <div class="col-md-12">
+                            Minimum Order Quantity: <b>100</b>
+                        </div>
+                    </div>
                 </div>
                 <!--second buy group section-->
                 <div class="row" *ngIf="selectedPromo== 2">
@@ -541,11 +591,13 @@
                         </div>
                     </div>
                     <div class="row selectedRowSection">
-                        <div class="col-lg-11 slctd-row">
+                        <span class="selectedname" *ngFor="let data of geoGraphiesList;let i=index">
+                            <button type="button" class="btn btn-secondary btn-sm ml-2">{{data.aboveDefaultGeoName}}</button>
+                        </span>
+                        <!-- <div class="col-lg-11 slctd-row">
                             <div class="row">
                                 <div class="col-lg-9 sltd-span">
-                                    <span class="selectedname"
-                                        *ngFor="let data of geoGraphiesList;let i=index">{{data.aboveDefaultGeoName}}
+                                    <span class="selectedname" *ngFor="let data of geoGraphiesList;let i=index">{{data.aboveDefaultGeoName}}
                                         (0/{{data.geoCount}}) ;
                                     </span>
                                     <span class="selectedcolor"></span>
@@ -555,7 +607,7 @@
                                         Geographies</button>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <br>
                     <div class="row">
@@ -564,6 +616,7 @@
                         </div>
                     </div>
                     <!--grid-->
+                    <!-- [rowSelection]="'multiple'" -->
                     <div class="grid-table mt-2">
                         <ag-grid-angular (firstDataRendered)="onFirstDataRendered($event)" id="gridContainer"
                             class="ag-theme-material" (gridReady)="onGridReady($event)" [rowHeight]="25" [headerHeight]="48"
@@ -571,15 +624,15 @@
                             [rowData]="rowData5" [suppressExcelExport]="true" [popupParent]="popupParent"
                             (cellValueChanged)="onCellValueChanged($event)" (rowClicked)="openDialog()"
                             (cellClicked)="onCellClicked($event)" [paginationPageSize]="paginationPageSize"
-                            (bodyScroll)="handleScroll($event)" [rowSelection]="'multiple'"
+                            (bodyScroll)="handleScroll($event)" 
                             (rowSelected)="onRowSelect($event)"></ag-grid-angular>
                     </div>
                 </div>
                 <!-- additional remarks -->
-                <div class="row mb-3">
+                <div class="row mb-3 mt-2">
                     <div class="col-lg-12">
                         <label> Additional Remarks </label><br>
-                        <input type="text"  value="{{Remarks}}" readonly [(ngModel)]="Additional"
+                        <input type="text"  value="{{Remarks}}" [(ngModel)]="Additional"
                             class="form-control border border-success">
                         <!-- <span id="REAMRKs">{{ Remarks }}</span> -->
                     </div>

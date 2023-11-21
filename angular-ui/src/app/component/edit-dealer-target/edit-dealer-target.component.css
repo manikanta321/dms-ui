@@ -1,3 +1,13 @@
+.selected-data
+{
+    margin-left: 9px;
+   
+}
+.view-mode
+{
+    margin-left: 10px;
+}
+
 .main {
     overflow-x: hidden !important;
 }
@@ -128,11 +138,10 @@ label {
 .total-rows {
     box-sizing: border-box;
     position: relative;
-    width: 1168px;
+    /* width: 1168px; */
     height: 35.03px;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
+    border: 2px solid #989CA04D;
+    border-radius: 5px;
     font-family: 'Gilroy';
     font-size: 20px;
     line-height: 23px;
@@ -161,9 +170,22 @@ label {
     min-height: 237px;
     border-width: 0px 1px 1px 1px;
     border-style: solid;
-    border-color: #686E74;
+    border-color:  #989CA04D;
     border-radius: 0px 0px 10px 10px;
     left: 3px;
+    top: -14px;
+}
+.tabledatatarget
+{
+    margin-left: 25px;
+}
+.tableheading
+{
+    background: #018B75;
+    border: 2px solid #989CA04D;
+    height: 32px;
+    color: white;
+    border-radius: 40px !important;
 }
 
 .IteminputBoxes {
@@ -171,11 +193,22 @@ label {
     height: 30px;
     background: none;
     border-radius: 10px;
-    border: 1px solid black;
+    border: 1px solid #018B75;
     font-size: 12.5px;
     margin: 3px;
     background: #FFFFFF;
 }
+.viewtargetData{
+    width: 59px;
+    height: 30px;
+    background: none;
+    border-radius: 7px;
+    border: 2px solid #989CA04D;
+    font-size: 12.5px;
+    margin: 3px;
+    background: none;
+}
+
 
 input[type=checkbox] {
     accent-color:rgba(1, 139, 117, 1);
@@ -187,8 +220,8 @@ input[type=checkbox] {
     width: 59px;
     height: 30px;
     background: none;
-    border-radius: 10px;
-    border: 1px solid black;
+    border-radius: 7px;
+    border: 2px solid #989CA04D;
     font-size: 12.5px;
     margin: 3px;
     background: none;
@@ -252,8 +285,7 @@ input[type=checkbox] {
     width: 130px;
     height: 30px;
     background: #FFFFFF;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border: 2px solid #989CA04D;
     border-radius: 8px;
     font-family: 'Gilroy';
 }
@@ -264,8 +296,7 @@ input[type=checkbox] {
     width: 130px;
     height: 30px;
     background:transparent;
-    border: 0.5px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
+    border: 2px solid #989CA04D;
     border-radius: 8px;
     font-family: 'Gilroy';
 }
@@ -282,8 +313,6 @@ label {
 
 .total-prod {
     position: relative;
-    top: 33px;
-    left: 10px;
     font-family: 'Gilroy';
     font-size: 13px;
     line-height: 15px;
@@ -379,9 +408,9 @@ label {
     pointer-events: none;
   }
 ::ng-deep.targetdrp .ng-select.ng-select-single .ng-select-container {
-    border: 0.5px solid #000000;
     border-radius: 10px;
-    background-color: transparent;
+    background-color: white;
+    border: 2px solid #989CA04D;
   }
   ::ng-deep.targetdrp .ng-placeholder {
     color: #999;

@@ -76,6 +76,7 @@ export class EditDealerTargetComponent implements OnInit {
   TargetAssociationId:any;
   LoginId:any;
   dealerTargetSetItem:any;
+  dealerTargetaddorderdit:any;
   targetGroupId:any;
   mainadd: any = [{
   }]
@@ -95,19 +96,21 @@ export class EditDealerTargetComponent implements OnInit {
 
   }
   ngOnInit(): void {
- 
 
-
+  
     this.LoginId=localStorage.getItem("logInId");
 
     let id = localStorage.getItem('editOrAddTarget');
     this.TargetAssociationId=id;
     this.dealerTargetSetItem=localStorage.getItem('dealerTargetSetItem')
+    this.dealerTargetaddorderdit=localStorage.getItem('dealerTargetaddorderdit');
 
     let data = {
       "TargetAssociationId":Number(id),
       "CurrentUserId":this.LoginId
     }
+    
+ 
     this.targetList.getTargetById(data).subscribe((res) => {
       console.log(res.response);
       
@@ -892,4 +895,10 @@ console.log('obj1obj1obj1',obj1)
       console.log("this.ProductCount ", this.ProductCount);
     })
   }
+
+  getSelectedTargetGroupName(): string {
+    const selectedTarget = this.targetListData.find(item => item.targetGroupId === this.targetId);
+    return selectedTarget ? selectedTarget.targetGroupName : '';
+  }
+  
 }

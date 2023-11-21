@@ -300,7 +300,7 @@ border-radius: 10px; */
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-thumb {

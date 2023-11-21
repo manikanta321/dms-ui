@@ -320,13 +320,13 @@ border-top-right-radius: 13px;
 }
 .numbers
 {
-  padding-right: 17%;
+  /* padding-right: 17%; */
   color: rgba(1, 139, 117, 1);
 
 }
 .numberss
 {
-  padding-right: 17%;
+  /* padding-right: 17%; */
   color:black;
   font-weight: 600;
 
@@ -3216,7 +3216,7 @@ line-height: 16px;
 cursor: pointer;
  color: rgba(1, 139, 117, 1);
  position: relative;
- right: 67px;
+ right: 67px !important;
 
 
 }
@@ -3303,9 +3303,10 @@ cursor: pointer;
    }
 
    .promotion-container .promo-view .mat-icon{
+    top: 9px;
     width: 26px;
     /* border: 1px solid #ccc; */
-    left:-166px;
+    left:-175px;
     position:relative;
    }
 

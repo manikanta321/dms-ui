@@ -127,6 +127,9 @@
                                         <div class="promo-type">
                                             Type: <span> {{Item.promotionTypesName}}</span>
                                         </div>
+                                        <div class="promo-name">
+                                            MOQ: <span> {{Item.moq}}</span>
+                                        </div>
                                         <div class="promo-view-wrapper">
                                             <div class="promo-view" (click)="showPromotionInfo($event,Item)">
                                                 <mat-icon> remove_red_eye </mat-icon>
@@ -467,6 +470,9 @@
                                         <div class="promo-type">
                                             Type: <span> {{Item.promotionTypesName}}</span>
                                         </div>
+                                        <div class="promo-name">
+                                            MOQ: <span> {{Item.moq}}</span>
+                                        </div>
                                         <div class="promo-view-wrapper">
                                             <div class="promo-view" (click)="showPromotionInfo($event,Item)">
                                                 <mat-icon> remove_red_eye </mat-icon>
@@ -606,7 +612,7 @@
                                                 [(ngModel)]="Item.quantity" class="NonPromodataquantity"> </td>
                                         <td> 
                                             <input type="text" disabled [(ngModel)]="'$'+Item.finalValue"
-                                                class="FInalvaluenonpromo" >
+                                                class="FInalvaluenonpromo" [style.left]="value.length>0?'0px':'18px'" >
                                              </td>
                                         <td>
                                             <div class="removeCircleNONPromodata" (click)="removeNonPromotionItem(Item)">
@@ -622,7 +628,7 @@
                                         <td style="text-align: end;"><b>Total</b></td>
                                         <!-- <td style="text-align: end;"><b>{{(editTotalqty||0)+(productqty?.overallQty+nonPromoQTY)}}</b></td> -->
                                         <td style="text-align: end;"><b>{{(shippingPackingchargeDetails.totalQty||0)}}</b></td>
-                                        <td style="text-align: center;padding-right: 18px;"><b>{{ (shippingPackingchargeDetails.subTotal||0) ||( nonPromotionAmount||0)| currency:'USD':'symbol':'1.2-2'}}</b></td>
+                                        <td style="text-align: center;" [style.left]="value.length>0?'0px':'18px'"><b>{{ (shippingPackingchargeDetails.subTotal||0) ||( nonPromotionAmount||0)| currency:'USD':'symbol':'1.2-2'}}</b></td>
                                     </tr>
                                 </ng-container>
                             </table>
@@ -631,17 +637,20 @@
                             <table class="TOtalCalculations" *ngIf="shippingPackingchargeDetails">
                                 <tr>
                                     <td class="text-left SUBITEMNAME ml-5"><p style="margin-left: 20%;margin-top: 7px;">Sub-Total</p></td>
-                                    <td class="text-right numbers">
+                                    <td class="text-right numbers" 
+                                    [style.padding-right]="shippingPackingchargeDetails.total > 0 ? '17%' : '13%'">
                                         {{  (shippingPackingchargeDetails.subTotal ? shippingPackingchargeDetails.subTotal : '0')| currency:'USD':'symbol':'1.2-2'}}
                                     </td>                                
                                 </tr>
                                 <tr>
                                     <td class="text-left SUBITEMNAME"><p style="margin-left: 20%;margin-top: 7px;">Packing Charge</p></td>
-                                    <td class="text-right numbers ">{{'$'+(shippingPackingchargeDetails.packingCharges ? shippingPackingchargeDetails.packingCharges : '0')}}</td>
+                                    <td class="text-right numbers "
+                                    [style.padding-right]="shippingPackingchargeDetails.total > 0 ? '17%' : '13%'">{{'$'+(shippingPackingchargeDetails.packingCharges ? shippingPackingchargeDetails.packingCharges : '0')}}</td>
                                 </tr>
                                 <tr>
                                     <td class="text-left SUBITEMNAME"><p style="margin-left: 20%;" >Shipping Charge</p></td>
-                                    <td class="text-right numbers">{{'$'+(shippingPackingchargeDetails.shippingCharges ? shippingPackingchargeDetails.shippingCharges: '0' )}}</td>
+                                    <td class="text-right numbers"
+                                    [style.padding-right]="shippingPackingchargeDetails.total > 0 ? '17%' : '13%'">{{'$'+(shippingPackingchargeDetails.shippingCharges ? shippingPackingchargeDetails.shippingCharges: '0' )}}</td>
                                 </tr>
                                 <!-- <tr>
                                     <td class="text-left SUBITEMNAME"><p style="margin-left: 20%;" > Tax</p> </td>
@@ -649,7 +658,8 @@
                                 </tr> -->
                                 <tr>
                                     <td class="text-left SUBITEMNAME" style="font-family: 'Gilroy-SemiBold';"><p style="margin-left: 20%;">Total value</p></td>
-                                    <td class="text-right numberss">{{  (shippingPackingchargeDetails.total ? shippingPackingchargeDetails.total : '0')| currency:'USD':'symbol':'1.2-2'}}
+                                    <td class="text-right numberss"
+                                    [style.padding-right]="shippingPackingchargeDetails.total > 0 ? '17%' : '13%'">{{  (shippingPackingchargeDetails.total ? shippingPackingchargeDetails.total : '0')| currency:'USD':'symbol':'1.2-2'}}
                                     </td>
 
                                 </tr>

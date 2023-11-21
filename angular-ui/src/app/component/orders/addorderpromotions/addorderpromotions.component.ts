@@ -202,6 +202,7 @@ export class AddorderpromotionsComponent implements OnInit {
   data: any;
   PromoExpand1: any = true;
   PromoExpand3: any = true;
+  value: any;
   dateChange(e) {
     this.selectedStartDate =
       new Date(e.value).getFullYear() +
@@ -268,7 +269,7 @@ export class AddorderpromotionsComponent implements OnInit {
     'Somebody Sales',
   ];
   loginid: any;
-
+  moq:any;
   productType: any;
   promotionName: any;
   promotionTypeId: boolean = false;
@@ -639,6 +640,7 @@ export class AddorderpromotionsComponent implements OnInit {
       overallAmount: overallAmount + this.nonPromotionAmount,
       extractedData: allExtractedData,
     };
+    this.value = overallData.extractedData
     localStorage.setItem('calculation', JSON.stringify(overallData));
     console.log('overallData',overallData);
     this.nonPromoQty = overallData.overallQty
@@ -675,6 +677,7 @@ export class AddorderpromotionsComponent implements OnInit {
             promotionName: item.promotionName,
             imageurl: item.imageurl,
             promotionTypesName: item.promotionTypesName,
+            moq:item.moq
           };
           this.arrayOfImages.push(obj);
           // onFileChange(event: any) {

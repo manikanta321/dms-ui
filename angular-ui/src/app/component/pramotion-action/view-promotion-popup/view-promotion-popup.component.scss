@@ -102,6 +102,7 @@
 .viewpromoItem {
     font-weight: 300;
     font-size: 18px;
+    margin-left: 12px;
   }
   .plus-image {
     width: 22px;
@@ -191,10 +192,9 @@ margin-left: -34px;
   }
   
   .buyoneSet {
-    border: 1px solid #000000;
-    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
     border-radius: 10px;
-    padding: 10px;
+    // padding: 10px;
+    box-shadow: none;
   }
   
   .getSet1,
@@ -202,7 +202,7 @@ margin-left: -34px;
     /* border: 1px solid #000000;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), -4px -4px 8px rgba(255, 255, 255, 0.2);
   border-radius: 10px; */
-    padding: 10px;
+     padding: 1px;
   }
   
   /* .mat-form-field::placeholder {
@@ -767,6 +767,10 @@ margin-left: -34px;
     height: 132px;
     overflow-y: auto;
   }
+  .item-in-secondpromotions
+  {
+    overflow-y: auto;
+  }
   
   .plus-image {
     width: 22px;
@@ -978,6 +982,13 @@ margin-left: -34px;
   
   .item-header {
     font-size: 18px;
+  }
+  .secomdpromoheaderGetbuy
+  {
+    font-size: 17px;
+    font-family: 'Calibri';
+    font-weight: 400;
+
   }
   .item-header1{
     font-size: 18px;

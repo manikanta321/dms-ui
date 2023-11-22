@@ -347,7 +347,8 @@ export class ViewPromotionPopupComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any) { }
     
     statusName:any
-    aditionalMoqDetails:any=[]
+    aditionalMoqDetails:any=[];
+    AdditionalDetails:any=[];
   ngOnInit(): void {
     let data = localStorage.getItem('promoclickId');
     this.LoginId = localStorage.getItem("logInId");
@@ -495,7 +496,7 @@ export class ViewPromotionPopupComponent implements OnInit {
           this.aditionalMoqDetails.push(data)
         })
         console.log('this.aditionalMoqDetails',this.aditionalMoqDetails);
-      }
+             }
       if (res.response.promotionTypesId == 2 || res.response.promotionTypesName == "Buy AB Get CD") {
         this.addbuyset = [];
         this.noPromotionSelected = false;
@@ -580,6 +581,8 @@ export class ViewPromotionPopupComponent implements OnInit {
           console.log('addgetset', this.addgetset)
         })
 
+        this.AdditionalDetails = res.response.promoDetails.aditionalMoqDetails;
+         console.log("aditionalMoqDetails checking RK",this.AdditionalDetails);
       }
       if (res.response.promotionTypesId == 3||res.response.promotionTypesName == 'Volume Discount') {
         this.productPromotionsId = res.response?.productPromotionsId;

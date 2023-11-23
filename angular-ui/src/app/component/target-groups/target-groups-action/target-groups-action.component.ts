@@ -14,9 +14,12 @@ export class TargetGroupsActionComponent implements OnInit {
   private params;
   public isOpen = false;
   private tippyInstance;
+  usertype:any
   selected:boolean=false;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.usertype = localStorage.getItem('userType')
+  }
   
   @ViewChild('content') container;
 

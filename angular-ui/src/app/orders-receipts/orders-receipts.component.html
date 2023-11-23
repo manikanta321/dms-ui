@@ -62,22 +62,22 @@
       <div class="col-md-2 col-lg-2 col-sm-2" *ngIf="userType == 'Dealer Admin'">
          
       </div>
-      <div class="col-md-2 col-lg-2 col-sm-2"*ngIf="userType == 'Dealer Admin'">
+      <div class="col-md-2 col-lg-2 col-sm-2" *ngIf="userType == 'Dealer Admin'">
          
       </div>
       <!-- bulk Downloaded -->
 
-      <div class="col-md-0 col-lg-0 col-sm-0" style="margin-left: 10px;">
-        <div class="sales-download" (click)="bulkDownload()">
-          <img class="dwnld-img" src="assets/img/orderlist-upload.svg" 
-              alt="add-user-btn">
-      </div>
+      <div class="col-md-0 col-lg-0 col-sm-0" style="margin-left: 10px;" >
+          <div class="sales-download" (click)="bulkDownload()" >
+            <img class="dwnld-img" src="assets/img/orderlist-upload.svg" 
+                alt="add-user-btn">
+        </div>
       </div>
 
    <!-- Bulk Uploaded orderReceiptsBulkUpload -->
 
    <div class="col-md-0 col-lg-0 col-sm-0">
-    <div class="sales-upload" (click)="orderReceiptsBulkUpload()">
+    <div class="sales-upload" (click)="orderReceiptsBulkUpload()" *ngIf="userType !== 'Viewer'">
       <img   class="imgupload" src="assets/img/orderlist-downloD.svg"
           alt="add-user-btn">    
   </div>

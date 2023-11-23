@@ -90,7 +90,7 @@
               </div>
             </div> -->
             <div>
-              <div class="target-upload" (click)="orderTargetUpload()">
+              <div class="target-upload" (click)="orderTargetUpload()" *ngIf="usertype!=='Viewer'">
                   <img   class="imgupload" src="assets/img/orderlist-downloD.svg"
                       alt="add-user-btn">
               </div>

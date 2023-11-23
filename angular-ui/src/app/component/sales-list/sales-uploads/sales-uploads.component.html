@@ -26,7 +26,7 @@
                             alt="add-user-btn">
                     </div>
 
-                    <div class="sales-upload" (click)="salesUpload()">
+                    <div class="sales-upload" (click)="salesUpload()" *ngIf="usertype !=='Viewer'">
                       <img   class="imgupload" src="assets/img/orderlist-downloD.svg"
                           alt="add-user-btn">    
                   </div>

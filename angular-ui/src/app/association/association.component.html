@@ -67,7 +67,7 @@
         </div>
         <!-- upload -->
         <div class="col-md-0">
-          <div class="asso-upload" (click)="orderTargetUpload()" *ngIf="userType !== 'Dealer Admin'">
+          <div class="asso-upload" (click)="orderTargetUpload()" *ngIf="userType !== ('Dealer Admin' && 'Viewer')">
             <img class="imgupload" src="assets/img/orderlist-downloD.svg" alt="add-user-btn">
           </div>
         </div>
@@ -83,7 +83,7 @@
             <img src="assets/img/ll.svg" style="position: relative;top: 9px;left: 9px;width: 23px;height: 19px;"
               alt="add-user-btn">
           </div>
-          <div class="asso-uploaddealer" (click)="orderTargetUpload()" style=" cursor: pointer; margin-left: 20px ;">
+          <div class="asso-uploaddealer" (click)="orderTargetUpload()" style=" cursor: pointer; margin-left: 20px ;" *ngIf="userType !== 'Viewer'">
             <img class="imgupload" src="assets/img/orderlist-downloD.svg" alt="add-user-btn">
           </div>
         </div>

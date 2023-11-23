@@ -72,6 +72,7 @@ export class GeographicListComponent implements OnInit {
   secondColumn: any;
   ThirdColumn: any;
   packageChk: boolean = false;
+  usertype:any
   // headerName: string;
   // fieldName: string;
   constructor(
@@ -96,6 +97,7 @@ export class GeographicListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.usertype = localStorage.getItem('userType')
     this.getusertabeldata();
 
     this.shipClick('Shipping')
@@ -395,8 +397,6 @@ export class GeographicListComponent implements OnInit {
   shipClick(event: any) {
     // this.fieldName = "Shipping Form";
     if (event == 'Shipping') {
-
-
       const data = {
         "search": "",
         "shipping": true
@@ -409,28 +409,34 @@ export class GeographicListComponent implements OnInit {
 
 
       this.shippingChk = true;
-      this.columnDefs = [
-        {
-          headerName: 'Destination', field: 'geographyName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'],
-          width: 200
-        },
-
-        { headerName: 'Shipping Charge', field: 'charges',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn','rightAligned'] },
-
-
-        {
-          headerName: '',
-
-          colId: 'action',
-
-          cellRenderer: GeographicListActionComponent,
-          editable: false,
-          maxWidth: 65
-        },
-
-      ];
-
-
+      if(this.usertype !=='Viewer'){
+        this.columnDefs = [
+          {
+            headerName: 'Destination', field: 'geographyName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'],
+            width: 200
+          },
+  
+          { headerName: 'Shipping Charge', field: 'charges',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn','rightAligned'] },
+          {
+            headerName: '',
+  
+            colId: 'action',
+  
+            cellRenderer: GeographicListActionComponent,
+            editable: false,
+            maxWidth: 65
+          },
+        ];
+      }else{
+        this.columnDefs = [
+          {
+            headerName: 'Destination', field: 'geographyName',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn'],
+            width: 200
+          },
+          { headerName: 'Shipping Charge', field: 'charges',cellStyle: { color: '#686E74' }, type: ['nonEditableColumn','rightAligned'] },
+        ];
+  
+      }
     }
     else {
 
@@ -442,28 +448,33 @@ export class GeographicListComponent implements OnInit {
       this.user.getGeography(data1).subscribe((res) => {
         this.rowData6 = res.response;
       });
-      this.columnDefs1 = [
-        {
-          headerName: 'Destination', field: 'geographyName', type: ['nonEditableColumn'],
-          width: 200
-        },
-
-        { headerName: 'Packing Charge', field: 'charges', type: ['nonEditableColumn','rightAligned'], },
-
-
-        {
-          headerName: '',
-
-          colId: 'action',
-
-          cellRenderer: GeographicListActionComponent,
-          editable: false,
-          maxWidth: 65
-        },
-
-      ];
-
-
+      if(this.usertype !=='Viewer'){
+        this.columnDefs1 = [
+          {
+            headerName: 'Destination', field: 'geographyName', type: ['nonEditableColumn'],
+            width: 200
+          },
+  
+          { headerName: 'Packing Charge', field: 'charges', type: ['nonEditableColumn','rightAligned'], },
+          {
+            headerName: '',
+  
+            colId: 'action',
+  
+            cellRenderer: GeographicListActionComponent,
+            editable: false,
+            maxWidth: 65
+          },
+        ];
+      }else{
+        this.columnDefs1 = [
+          {
+            headerName: 'Destination', field: 'geographyName', type: ['nonEditableColumn'],
+            width: 200
+          },
+          { headerName: 'Packing Charge', field: 'charges', type: ['nonEditableColumn','rightAligned'], },
+        ];
+      }
 
       this.shippingChk = false;
 

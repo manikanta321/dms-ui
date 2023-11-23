@@ -39,7 +39,7 @@
                                             <img src="assets/img/pencil.svg" alt="Edit">
                                         </div>
                                         
-                                        <div class="action-item activate-deactivate-action"
+                                        <div class="action-item activate-deactivate-action" *ngIf="usertype !=='Viewer'"
                                             (click)="activateDeactivateGeography($event, geoItem, (i+1) )">
                                             <img src="/assets/img/power.svg" alt="activate">
                                         </div>

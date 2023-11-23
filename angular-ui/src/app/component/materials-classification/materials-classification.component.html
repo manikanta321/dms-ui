@@ -18,12 +18,20 @@
         <p class="primary">Primary categories</p>
         <mat-card-content>
           <div class=" d-flex" *ngFor="let catg of catgname">
-            <p class="col-11 catg cursor-pointer" (click)="catg.isActive==true ?  onClick(catg) : false" [ngClass]="{ 'selected': catg.catId == selectedItem.catId ,'selectedInactive': catg.isActive==false }" style="cursor: pointer;">{{catg.catName}} 
-               <span *ngIf="!(catg.catId == selectedItem.catId)" ><img src="../../../assets/img/power.svg"  alt="" class="tickmark" (click)="deativateCat(catg)" >
-                 <img src="../../../assets/img/pencil.svg"  alt="" class="tickmark"*ngIf="catg.isActive"  (click)="editcategory(catg)" ></span>
-                 <span *ngIf="catg.catId == selectedItem.catId" ><img src="../../../assets/img/Group.svg"  alt="" class="tickmark" (click)="deativateCat(catg)" >
-                  <img src="../../../assets/img/editMeterial.svg"  alt="" class="tickmark"*ngIf="catg.isActive"  (click)="editcategory(catg)" ></span>
-                </p>
+            <p class="col-11 catg cursor-pointer" (click)="catg.isActive==true ?  onClick(catg) : false"
+              [ngClass]="{ 'selected': catg.catId == selectedItem.catId ,'selectedInactive': catg.isActive==false }"
+              style="cursor: pointer;">{{catg.catName}}
+              <span *ngIf="!(catg.catId == selectedItem.catId) && usertype !== 'Viewer'">
+                <img src="../../../assets/img/power.svg" alt="" class="tickmark" (click)="deativateCat(catg)">
+                <img src="../../../assets/img/pencil.svg" alt="" class="tickmark" *ngIf="catg.isActive"
+                  (click)="editcategory(catg)">
+              </span>
+              <span *ngIf="(catg.catId == selectedItem.catId) && usertype !== 'Viewer' ">
+                <img src="../../../assets/img/Group.svg" alt="" class="tickmark" (click)="deativateCat(catg)">
+                <img src="../../../assets/img/editMeterial.svg" alt="" class="tickmark" *ngIf="catg.isActive"
+                  (click)="editcategory(catg)">
+              </span>
+            </p>
              
             <!-- <mat-icon class="col-2" (click)="removecatg(catg)" style="cursor: pointer;padding-top: 2px;">remove_circle</mat-icon> -->
           </div>

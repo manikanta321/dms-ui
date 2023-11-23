@@ -77,6 +77,7 @@ export class GeoClassificationComponent implements OnInit {
 
   geoGraphyHirerachyData: any;
   geoGraphyFullData: any;
+  usertype:any
 
   colorsList = [
     { primaryColor: { background: '#00187A', color: '#fff' }, secondaryColor: { background: "#EAEEFF", color: "#00187A" }, },
@@ -113,6 +114,7 @@ export class GeoClassificationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.usertype = localStorage.getItem('userType')
     this.logedUserId = localStorage.getItem("logInId");
     this.userIdNumber = Number(this.logedUserId);
     console.log(this.userIdNumber);

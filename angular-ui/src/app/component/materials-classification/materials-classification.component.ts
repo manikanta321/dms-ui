@@ -53,6 +53,7 @@ export class MaterialsClassificationComponent implements OnInit {
   SubCattyName: any;
   num:any;
   currentPageName: string = "";
+  usertype:any
   // clData: string[] = ['Type TP 1', 'Type TP 2', 'Type TP 3','Type TP 4'];
   // subcat: string[] = ['sub category', 'sub category 2',];
   constructor(
@@ -91,6 +92,7 @@ export class MaterialsClassificationComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.usertype = localStorage.getItem('userType')
     localStorage.setItem('catsetName', '')
     this.LoginId = localStorage.getItem("logInId");
     this.numberValue = Number(this.LoginId);

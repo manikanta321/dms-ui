@@ -25,6 +25,7 @@ export class SalesUploadsComponent implements OnInit {
   salesUploadList:any = [];
   public popupParent: HTMLElement = document.body;
   private gridApi!: GridApi;
+  usertype:any
   constructor(public dialog: MatDialog,
     private sharedService :SharedService, 
     private salesService:SalesServicesService,
@@ -32,6 +33,7 @@ export class SalesUploadsComponent implements OnInit {
 
   ngOnInit(): void {
     this.SalesUpload();
+    this.usertype = localStorage.getItem('userType')
   }
   onGridReady(params: GridReadyEvent) {
     this.gridApi = params.api;

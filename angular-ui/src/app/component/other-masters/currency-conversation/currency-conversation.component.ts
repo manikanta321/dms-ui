@@ -86,6 +86,7 @@ export class CurrencyConversationComponent implements OnInit {
   searchText: any;
   dropdownSettings: IDropdownSettings = {};
   dropdownSettings1: IDropdownSettings = {};
+  usertype:any
 
   gridOptions: GridOptions = {
     defaultColDef: {
@@ -106,89 +107,8 @@ export class CurrencyConversationComponent implements OnInit {
   // Data that gets displayed in the grid
   public rowData5 = [];
   public popupParent: HTMLElement = document.body;
-
-  columnDefs: ColDef[] = [
-
-    {
-      headerName: "Name",
-      field: 'uoMName', type: ['nonEditableColumn'], minWidth: 250
-    },
-
-    { headerName: "Display Unit", field: 'uoMShortName', type: ['nonEditableColumn'] },
-
-    { headerName: "Rate", field: 'conversionRate', type: ['nonEditableColumn','rightAligned'] },
-
-    // {  headerName: "Rate",
-    //  field: 'uoMShortName',type: ['nonEditableColumn']},
-
-    {
-      headerName: " Effective Date",
-      field: 'effectiveFrom', type: ['nonEditableColumn'],
-      cellRenderer: function dateFormtter(params)
-{
-        
-        if (params.value == null) {
-          return params.value = ''    
-        }
-        else {
-          
-           return moment(params.value).format('DD-MMM-YY');
-         
-
-        }
-      },
-      
-      tooltipValueGetter: (params: ITooltipParams) => moment(params.value).format('DD-MMM-YY'),
-
-      
-    },
-
-    {
-      headerName: "Standard Currency",
-      // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
-      field: 'uoMShortName', type: ['nonEditableColumn']
-    },
-
-    // suppressMovable:true,
-    {
-      headerName: "Status",
-      field: 'statusName',
-      maxWidth: 109,
-      type: ['nonEditableColumn'],
-      cellEditor: 'agSelectCellEditor',
-      cellEditorParams: {
-        values: ['Active', 'Inactive', 'Invited', 'Locked',],
-      },
-      cellClass: params => {
-        return params.value == 'InActive' ? 'my-class-1':  params.value =='Active'?'my-class-2': params.value=='Invited'?'my-class-3':'my-class-4'
-      }
-    },
-    {
-      headerName: '',
-      colId: 'action',
-      cellRenderer: CurrencyActionComponent,
-
-      editable: false,
-      maxWidth: 75
-      //    headerName: "",
-      // field: '',  filter: false, sortable: false,width:20,
-      // cellRenderer: function clickNextRendererFunc(){
-      //   return '<i class="fa fa-ellipsis-v" aria-hidden="true" `(click)="editfn()`"></i>';
-      // }, 
-      //  cellEditorPopup: true,
-      //  onCellClicked: (event: CellClickedEvent) => this.dialog.open(DeletecomponentComponent, {panelClass: 'editpopup'})
-      // // onCellClicked: (event: CellClickedEvent) => this.iconDisabled = true
-    },
-
-    // {
-    //   headerName: "Avatar",
-    //   field: "avatar",
-    //   width: 100,
-    //   cellRenderer: `<img style="height: 14px; width: 14px" src='../../../assets/img/edit.svg' />`
-    //  },
-
-  ];
-
+ 
+  columnDefs: ColDef[] = []
 
   rowData: any;
   rowData1 = [];
@@ -349,8 +269,7 @@ export class CurrencyConversationComponent implements OnInit {
 
 
   ngOnInit(): void {
-
-
+    this.usertype = localStorage.getItem('userType')
     this.uomId = localStorage.getItem('niId');
     this.getcurrencylist();
     // this.getusertabeldata();
@@ -364,6 +283,149 @@ export class CurrencyConversationComponent implements OnInit {
     this.myForms = this.fb.group({
       citys: [this.selectedItems]
     });
+
+    if(this.usertype !=='Viewer'){
+      this.columnDefs=[
+        {
+          headerName: "Name",
+          field: 'uoMName', type: ['nonEditableColumn'], minWidth: 250
+        },
+    
+        { headerName: "Display Unit", field: 'uoMShortName', type: ['nonEditableColumn'] },
+    
+        { headerName: "Rate", field: 'conversionRate', type: ['nonEditableColumn','rightAligned'] },
+    
+        // {  headerName: "Rate",
+        //  field: 'uoMShortName',type: ['nonEditableColumn']},
+    
+        {
+          headerName: " Effective Date",
+          field: 'effectiveFrom', type: ['nonEditableColumn'],
+          cellRenderer: function dateFormtter(params)
+    {
+            
+            if (params.value == null) {
+              return params.value = ''    
+            }
+            else {
+              
+               return moment(params.value).format('DD-MMM-YY');
+             
+    
+            }
+          },
+          
+          tooltipValueGetter: (params: ITooltipParams) => moment(params.value).format('DD-MMM-YY'),
+    
+          
+        },
+    
+        {
+          headerName: "Standard Currency",
+          // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
+          field: 'uoMShortName', type: ['nonEditableColumn']
+        },
+    
+        // suppressMovable:true,
+        {
+          headerName: "Status",
+          field: 'statusName',
+          maxWidth: 109,
+          type: ['nonEditableColumn'],
+          cellEditor: 'agSelectCellEditor',
+          cellEditorParams: {
+            values: ['Active', 'Inactive', 'Invited', 'Locked',],
+          },
+          cellClass: params => {
+            return params.value == 'InActive' ? 'my-class-1':  params.value =='Active'?'my-class-2': params.value=='Invited'?'my-class-3':'my-class-4'
+          }
+        },
+        {
+          headerName: '',
+          colId: 'action',
+          cellRenderer: CurrencyActionComponent,
+    
+          editable: false,
+          maxWidth: 75
+          //    headerName: "",
+          // field: '',  filter: false, sortable: false,width:20,
+          // cellRenderer: function clickNextRendererFunc(){
+          //   return '<i class="fa fa-ellipsis-v" aria-hidden="true" `(click)="editfn()`"></i>';
+          // }, 
+          //  cellEditorPopup: true,
+          //  onCellClicked: (event: CellClickedEvent) => this.dialog.open(DeletecomponentComponent, {panelClass: 'editpopup'})
+          // // onCellClicked: (event: CellClickedEvent) => this.iconDisabled = true
+        },
+    
+        // {
+        //   headerName: "Avatar",
+        //   field: "avatar",
+        //   width: 100,
+        //   cellRenderer: `<img style="height: 14px; width: 14px" src='../../../assets/img/edit.svg' />`
+        //  },
+    
+      ];
+    
+    }
+    else{
+      this.columnDefs=[
+        {
+          headerName: "Name",
+          field: 'uoMName', type: ['nonEditableColumn'], minWidth: 250
+        },
+    
+        { headerName: "Display Unit", field: 'uoMShortName', type: ['nonEditableColumn'] },
+    
+        { headerName: "Rate", field: 'conversionRate', type: ['nonEditableColumn','rightAligned'] },
+    
+        // {  headerName: "Rate",
+        //  field: 'uoMShortName',type: ['nonEditableColumn']},
+    
+        {
+          headerName: " Effective Date",
+          field: 'effectiveFrom', type: ['nonEditableColumn'],
+          cellRenderer: function dateFormtter(params)
+    {
+            
+            if (params.value == null) {
+              return params.value = ''    
+            }
+            else {
+              
+               return moment(params.value).format('DD-MMM-YY');
+             
+    
+            }
+          },
+          
+          tooltipValueGetter: (params: ITooltipParams) => moment(params.value).format('DD-MMM-YY'),
+    
+          
+        },
+    
+        {
+          headerName: "Standard Currency",
+          // field: 'lastLoginDate',type: ['dateColumn', 'nonEditableColumn'], width: 220  },
+          field: 'uoMShortName', type: ['nonEditableColumn']
+        },
+    
+        // suppressMovable:true,
+        {
+          headerName: "Status",
+          field: 'statusName',
+          maxWidth: 109,
+          type: ['nonEditableColumn'],
+          cellEditor: 'agSelectCellEditor',
+          cellEditorParams: {
+            values: ['Active', 'Inactive', 'Invited', 'Locked',],
+          },
+          cellClass: params => {
+            return params.value == 'InActive' ? 'my-class-1':  params.value =='Active'?'my-class-2': params.value=='Invited'?'my-class-3':'my-class-4'
+          }
+        }
+      ];
+    
+    }
   }
 
   scrolledIndexChange(i): void {

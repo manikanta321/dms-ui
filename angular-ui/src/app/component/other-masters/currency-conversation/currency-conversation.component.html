@@ -33,7 +33,7 @@
       <div class="icon btnhover refreshbtn" (click)="refresh()">
         <img class="refresh" src="assets/img/Refreshbutton.svg" style="position: relative;top: 9px;left: 9px;" alt="refresh">
       </div>
-      <div class="add-user" (click)="addCurrencyButton()">
+      <div class="add-user" (click)="addCurrencyButton()" *ngIf="usertype!=='Viewer'">
         <img src="assets/img/ADD.svg" style="position: relative;top: 8px;left: 10px;" alt="add-user-btn">
       </div>
 

@@ -32,11 +32,12 @@
 }
 
 .close-icon {
-    left: 100%;
+    left: 104%;
     position: relative;
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;
+    top: -15px;
 }
 
 .popUpSize {

@@ -77,7 +77,7 @@ bottom: 11px;
     position: absolute;
     
 }
-.edituom:after
+.edituom::before
 {
     content: "";
     display: block;

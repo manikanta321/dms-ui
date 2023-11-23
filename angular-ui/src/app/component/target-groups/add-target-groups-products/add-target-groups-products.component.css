@@ -173,7 +173,7 @@ margin-right: 15px;
 .ref{
   /* border: 1px solid black; */
   border-radius: 10px;
-  background: #686E74;
+  background: grey;
   margin-left: -5px;
   width: 43px;
   padding: 8px 0px 0px 10px;
@@ -566,7 +566,7 @@ padding: 17px;
 
   border: none;
 
-  background: #686E74;
+  background: grey;
 
   color: white;
 

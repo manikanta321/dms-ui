@@ -248,6 +248,7 @@ padding-left: 11px;
   border-radius: 12px !important;
   background: white !important;
   height: 41px !important;
+  margin-left: 0px;
   
 }
 
@@ -307,6 +308,7 @@ padding-left: 11px;
   max-width: 170px !important;
   position: relative;
   top: 39px !important;
+  margin-left: 2px;
 }
 
 ::ng-deep.my-class-1 {

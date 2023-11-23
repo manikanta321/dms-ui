@@ -10,9 +10,9 @@ label
 {
     font-family: 'Gilroy-SemiBold';
 }
-.head-text.Edit{
+/* .head-text.Edit{
     text-align: left;
-}
+} */
 
 .olpass {
     font-family: 'Gilroy';
@@ -52,7 +52,7 @@ label
     position: absolute;
      
 }
-.edit-mode
+/* .edit-mode
 {
     text-align: left;
 }
@@ -80,7 +80,7 @@ label
      top: 50%;
      position: absolute;
     
-    }
+    } */
 
 
 

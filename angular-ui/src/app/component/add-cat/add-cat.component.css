@@ -66,7 +66,7 @@
     position: absolute;
 }
 
-.head-text.edit-header{
+/* .head-text.edit-header{
     text-align: left;
 }
 .head-text.edit-header::before {
@@ -74,7 +74,7 @@
 }
 .head-text.edit-header::after {
     width: 60%;
-}
+} */
 
 input {
     padding: 5px 12px;

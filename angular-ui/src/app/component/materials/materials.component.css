@@ -99,7 +99,7 @@ mat-sidenav-container {
     width: 378px !important;
     border-radius: 25px;
     background: white;
-    left: 30%;
+    /* left: 30%; */
     font-size: 15px;
 
 }

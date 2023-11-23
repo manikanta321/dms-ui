@@ -628,7 +628,7 @@
                                         <td style="text-align: end;"><b>Total</b></td>
                                         <!-- <td style="text-align: end;"><b>{{(editTotalqty||0)+(productqty?.overallQty+nonPromoQTY)}}</b></td> -->
                                         <td style="text-align: end;"><b>{{(shippingPackingchargeDetails.totalQty||0)}}</b></td>
-                                        <td style="text-align: center;" [style.left]="value.length>0?'0px':'18px'"><b>{{ (shippingPackingchargeDetails.subTotal||0) ||( nonPromotionAmount||0)| currency:'USD':'symbol':'1.2-2'}}</b></td>
+                                        <td style="text-align: center;" [style.padding-left]="value.length>0?'0px':'18px'"><b>{{ (shippingPackingchargeDetails.subTotal||0) ||( nonPromotionAmount||0)| currency:'USD':'symbol':'1.2-2'}}</b></td>
                                     </tr>
                                 </ng-container>
                             </table>

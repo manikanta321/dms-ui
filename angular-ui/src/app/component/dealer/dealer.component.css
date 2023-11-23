@@ -75,6 +75,7 @@ mat-tab{
     /* border-radius: 25px; */
     opacity: 1;
     background-color: rgba(1, 139, 117, 1)!important;
+    border-radius: 0px;
     
 }
 
@@ -126,7 +127,8 @@ mat-tab{
     position: relative;
     top: 4%;
     font-weight: bold;
-    left: 20px; 
+    /* left: 20px;  */
+    margin-left: 20px;
   }
 
   .print-img{

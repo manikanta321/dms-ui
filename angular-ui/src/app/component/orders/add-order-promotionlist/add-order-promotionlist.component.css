@@ -2595,8 +2595,9 @@ tr:nth-child(even) {
 }
 .bottom-tableGetset4 {
   background: linear-gradient(0deg, #018B75, #018B75)!important;
-  border-radius: 0px 0px 24.5px 24.5px;
-  height: 34px;
+  /* border-radius: 0px 0px 24.5px 24.5px; */
+  border-radius: 0px 0px 9.5px 12.5px;
+  height: 33px;
   border:rgba(152, 156, 160, 1);
   color: white;
 }
